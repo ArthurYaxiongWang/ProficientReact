@@ -36,24 +36,9 @@ function A() {
   );
 }
 
-function D({ passMsg }) {
-  return (
-    <div>
-      This is component D.
-      <button onClick={() => passMsg("From D: Hello sibling E")}>Click</button>
-    </div>
-  );
-}
-
-function E({ msg }) {
-  return <div>This is component E. Message from D: {msg} </div>;
-}
-
 function App() {
   const [msgb, setMsgb] = useState("");
   const [msgc, setMsgc] = useState("");
-
-  const [msgDtoE, setMsgDtoE] = useState("");
 
   return (
     <MsgContext.Provider value={{ setMsgb, setMsgc }}>
@@ -67,11 +52,6 @@ function App() {
         This is from component A:{" "}
         <A msgb={msgb} msgc={msgc} setMsgb={setMsgb} setMsgc={setMsgc} />
         <br />
-      </div>
-
-      <div>
-        <D passMsg={setMsgDtoE} />
-        <E msg={msgDtoE} />
       </div>
     </MsgContext.Provider>
   );
